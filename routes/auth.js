@@ -8,6 +8,10 @@ router.get('/signup', (req, res) => {
     res.send("hello");
 })
 
+router.get('/login', (req, res) => {
+    res.send("hello login page");
+})
+
 
 router.post('/signup', (req, res) => {
 	var {name, email, password} = req.body
@@ -43,6 +47,34 @@ router.post('/signup', (req, res) => {
 		})
     })
     
+})
+
+
+router.post('/login', (req, res) => {
+	var {email,password} = req.body
+    if(!email || !password )
+    {
+        return res.status(422).json({error:"Please add all fields"})
+    }
+
+    User.findOne({email:email})
+    .then((savedUser) => {
+        if(!savedUser) {
+            return res.status(422).json({error:"Invalid Email or password"})
+        } 
+        bcrypt.compare(password, savedUser.password)
+        .then(match => {
+            if(match) {
+                res.json({message:"Login Successfull"})
+            }
+            else {
+                return res.status(422).json({error:"Invalid email or password"})
+            }
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    })
 })
 
 
