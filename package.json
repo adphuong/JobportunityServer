@@ -1,0 +1,16 @@
+{
+  "name": "jobtracker-app",
+  "version": "1.0.0",
+  "description": "Webapp with login auth to track job hunt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "April Phuong",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.6.2",
+    "nodemon": "^2.0.20"
+  }
+}
