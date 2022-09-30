@@ -1,32 +1,20 @@
-const express = require('express')
-const app = express()
-const PORT = 2300
-const mongoose = require("mongoose")
-const {MONGOURL} = require("./keys")
+const express = require('express');
+const connectDB = require('./config/db');
+const User = require("./models/User");
 
-require("./models/user")
+const app = express();
+const PORT = 2300;
 
-app.use(express.json())
-app.use(require('./routes/auth'))
+// COnnect database
+connectDB();
 
-
-mongoose.connect(MONGOURL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-
-mongoose.connection.on("connected", () => {
-  console.log("Connected to MongoDb")
-})
-
-mongoose.connection.on("error", () => {
-  console.log("Error connecting to MongoDb!")
-})
+app.use(express.json());
+app.use(require('./routes/auth'));
 
 app.get('/', (req, res) => {
   res.send("hello world")
-})
+});
 
 app.listen(PORT, () => {
   console.log("Server is running on http://localhost:" + PORT + "; press Ctrl-C to terminate.")
-})
+});

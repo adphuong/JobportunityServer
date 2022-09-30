@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
 });
 
 
-// @route GET api/books/:id
+// @route GET api/jobs/:id
 // @description Update book
 // @access Public
 router.put('/:id', (req, res) => {
@@ -54,7 +54,7 @@ router.put('/:id', (req, res) => {
 });
 
 
-// @route GET api/books/:id
+// @route GET api/jobs/:id
 // @description Delete book by id
 // @access Public
 router.delete('/:id', (req, res) => {
