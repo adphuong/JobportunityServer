@@ -16,7 +16,8 @@ router.get('/test', (req, res) => res.send('job route testing!'));
 // @description Get all jobs
 // @access Public
 router.get('/', (req, res) => {
-  Job.find()
+    res.send("homepage testing");
+    Job.find()
     .then(jobs => res.json(jobs))
     .catch(err => res.status(404).json({ nojobsfound: 'No Jobs found' }));
 });
@@ -26,7 +27,7 @@ router.get('/', (req, res) => {
 // @description Get single job by id
 // @access Public
 router.get('/:id', (req, res) => {
-  Job.findById(req.params.id)
+    Job.findById(req.params.id)
     .then(job => res.json(job))
     .catch(err => res.status(404).json({ nojobsfound: 'No Job found' }));
 });
@@ -36,7 +37,7 @@ router.get('/:id', (req, res) => {
 // @description add/save kpn
 // @access Public
 router.post('/', (req, res) => {
-  Job.create(req.body)
+    Job.create(req.body)
     .then(job => res.json({ msg: 'Job added successfully' }))
     .catch(err => res.status(400).json({ error: 'Unable to add this Job' }));
 });
@@ -46,7 +47,7 @@ router.post('/', (req, res) => {
 // @description Update book
 // @access Public
 router.put('/:id', (req, res) => {
-  Job.findByIdAndUpdate(req.params.id, req.body)
+    Job.findByIdAndUpdate(req.params.id, req.body)
     .then(job => res.json({ msg: 'Updated successfully' }))
     .catch(err =>
       res.status(400).json({ error: 'Unable to update the Database' })
@@ -58,7 +59,7 @@ router.put('/:id', (req, res) => {
 // @description Delete book by id
 // @access Public
 router.delete('/:id', (req, res) => {
-  Job.findByIdAndRemove(req.params.id, req.body)
+    Job.findByIdAndRemove(req.params.id, req.body)
     .then(job => res.json({ mgs: 'Job entry deleted successfully' }))
     .catch(err => res.status(404).json({ error: 'No such a job' }));
 });

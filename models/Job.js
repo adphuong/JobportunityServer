@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 
-const BookSchema = new mongoose.Schema({
+const JobSchema = new mongoose.Schema({
   next_step: {
     type: String,
     required: true
