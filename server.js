@@ -21,11 +21,8 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ extended: false }));
 
 app.use(require('./routes/auth'));
-app.use('/api', require('./routes/api/jobs'));
+app.use('/api/jobs', jobs);
 
-// app.get('/', (req, res) => {
-//   res.send("hello world")
-// });
 
 app.listen(PORT, () => {
   console.log("Server is running on http://localhost:" + PORT + "; press Ctrl-C to terminate.")
