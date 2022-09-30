@@ -3,10 +3,6 @@
 const mongoose = require('mongoose');
 
 const JobSchema = new mongoose.Schema({
-  next_step: {
-    type: String,
-    required: true
-  },
   company: {
     type: String,
     required: true
@@ -15,16 +11,22 @@ const JobSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  date_applied: {
-    type: Date
-  },
   stage: {
     type: String,
     required: true
+  },
+  next_step: {
+    type: String,
+    required: true
+  },
+  date_applied: {
+    type: Date
   },
   notes: {
     type: String
   }
 });
 
-module.exports = Job = mongoose.model('job', JobSchema);
+
+mongoose.model("Job", JobSchema);
+// module.exports = Job = mongoose.model('job', JobSchema);

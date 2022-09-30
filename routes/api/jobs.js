@@ -3,7 +3,9 @@ const router = express.Router();
 
 
 // Load Job model
-const Job = require('../../models/Job');
+// const Job = require('../../models/Job');
+const mongoose = require("mongoose");
+const User = mongoose.model("Job");
 
 
 // @route GET api/jobs/test
@@ -16,7 +18,7 @@ router.get('/test', (req, res) => res.send('job route testing!'));
 // @description Get all jobs
 // @access Public
 router.get('/', (req, res) => {
-    res.send("homepage testing");
+    res.send("Jobs Homepage");
     Job.find()
     .then(jobs => res.json(jobs))
     .catch(err => res.status(404).json({ nojobsfound: 'No Jobs found' }));
