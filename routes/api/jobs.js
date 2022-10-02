@@ -17,10 +17,9 @@ router.get('/test', (req, res) => res.send('job route testing!'));
 router.get('/', async (req, res) => {
     // res.send("Jobs API Homepage");
 
-    jobSchema.find()
-    .then(items => res.json(items))
-    .catch(err => res.status(404).json({ nojobsfound: 'No Jobs found' }))
-    
+    // jobSchema.find()
+    // .then(items => res.json(items))
+    // .catch(err => res.status(404).json({ nojobsfound: 'No Jobs found' }))
     
     const jobs = await jobSchema.find().sort({ date_applied: -1 })
     res.send(jobs);
