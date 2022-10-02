@@ -15,12 +15,15 @@ router.get('/test', (req, res) => res.send('job route testing!'));
 // @description Get all jobs
 // @access Public
 router.get('/', async (req, res) => {
-    res.send("Jobs API Homepage");
+    // res.send("Jobs API Homepage");
 
     jobSchema.find()
     .then(items => res.json(items))
     .catch(err => res.status(404).json({ nojobsfound: 'No Jobs found' }))
-    // const jobs = await Job.find().sort({ date_applied: -1 })
+    
+    
+    const jobs = await jobSchema.find().sort({ date_applied: -1 })
+    res.send(jobs);
     // .catch(err => res.status(404).json({ nojobsfound: 'No Jobs found' }));
 });
 
@@ -30,7 +33,7 @@ router.get('/', async (req, res) => {
 // @description add/save kpn
 // @access Public
 router.post('/add-job', async (req, res) => {
-    jobSchema.create({
+    let job = jobSchema.create({
         company: req.body.company,
         position: req.body.position,
         stage: req.body.stage,
@@ -40,26 +43,7 @@ router.post('/add-job', async (req, res) => {
     })
     .then((doc) => console.log(doc))
     .catch((err) => console.log(err));
-    // try {
-    //     await job.save()
-    //     res.status(201).json({
-    //         status: 'Success',
 
-    //         data : {
-    //             company,
-    //             position,
-    //             stage,
-    //             next_step,
-    //             date_applied,
-    //             notes
-    //         }
-    //     })
-    // } catch(err) {
-    //     res.status(500).json({
-    //         status: 'Failed',
-    //         message: 'Error in /routes/api/jobs.js'
-    //     })
-    // }
 });
 
 
