@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
 const JobSchema = new Schema({
   company: {
     type: String,
@@ -21,13 +22,15 @@ const JobSchema = new Schema({
     required: true
   },
   date_applied: {
-    type: Date
+    type: String
   },
   notes: {
     type: String
   }
 });
 
+
+  
 // const Job = mongoose.model("Job", JobSchema);
 // module.exports = Job;
 // mongoose.model("Job", JobSchema);
