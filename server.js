@@ -12,18 +12,21 @@ const app = express();
 const jobs = require('./routes/api/jobs');
 const users = require('./routes/auth');
 
-// Connect Mongo database
-connectDB();
 
 // Init Middleware
-// app.use(express.json({ extended: false }));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(express.json());
+app.use(express.json({ extended: false }));
+
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//   extended: true
+// }));
 
 // cors
 app.use(cors({ origin: true, credentials: true }));
+
+// Connect Mongo database
+connectDB();
 
 app.use('/api/users', users);
 app.use('/api/jobs', jobs);

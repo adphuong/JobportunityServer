@@ -15,7 +15,7 @@ router.get('/test', (req, res) => res.send('job route testing!'));
 // @description Get all jobs
 // @access Public
 router.get('/', async (req, res) => {
-    res.send("Jobs Homepage");
+    res.send("Jobs API Homepage");
 
     jobSchema.find()
     .then(items => res.json(items))
