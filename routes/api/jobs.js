@@ -30,18 +30,16 @@ router.get('/', async (req, res) => {
 // @description add/save kpn
 // @access Public
 router.post('/add-job', async (req, res) => {
-    // var {company, position, stage, next_step, date_applied, notes} = req.body
-    // const job = new Job({
-    //     company, position, stage, next_step, date_applied, notes
-    // })
-    jobSchema.create(req.body, (error, data) => {
-        if (error) {
-            return next(error)
-        } else {
-            console.log(data)
-            res.json(data)
-        }
+    jobSchema.create({
+        company: req.body.company,
+        position: req.body.position,
+        stage: req.body.stage,
+        next_step: req.body.next_step,
+        date_applied: req.body.date_applied,
+        notes: req.body.notes
     })
+    .then((doc) => console.log(doc))
+    .catch((err) => console.log(err));
     // try {
     //     await job.save()
     //     res.status(201).json({
