@@ -66,6 +66,7 @@ const JobSchema = new Schema({
   },
   date_applied: {
     type: String,
+    default: "----",
     required: false,
     trim: true
   },
