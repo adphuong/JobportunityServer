@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Join = require("joi");      // object schema descriptions to validate JS objects
+const Joi = require("joi");      // object schema descriptions to validate JS objects
 
 
 const JobSchema = new Schema({
@@ -22,6 +22,7 @@ const JobSchema = new Schema({
   },
   stage: {
     type: String,
+    default: "Prospect",
     required: true,
     trim: true,
     // check if the value given is an item in the array.
@@ -41,8 +42,10 @@ const JobSchema = new Schema({
   },
   next_step: {
     type: String,
+    default: "Apply",
     required: true,
     trim: true,
+    
     enum: [
       "Apply",
       "Research",
@@ -58,7 +61,7 @@ const JobSchema = new Schema({
   },
   date_applied: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   notes: {

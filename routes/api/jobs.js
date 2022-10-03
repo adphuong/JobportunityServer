@@ -37,6 +37,7 @@ router.post('/add-job', async (req, res) => {
         position: req.body.position,
         stage: req.body.stage,
         next_step: req.body.next_step,
+        date_found: req.body.date_found,
         date_applied: req.body.date_applied,
         notes: req.body.notes
     })
