@@ -51,6 +51,11 @@ const JobSchema = new Schema({
       "Email: Thank you"
     ]
   },
+  date_found: {
+    type: String,
+    required: true,
+    trim: true
+  },
   date_applied: {
     type: String,
     required: true,
