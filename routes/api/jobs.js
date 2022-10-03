@@ -35,6 +35,7 @@ router.post('/add-job', async (req, res) => {
     let job = jobSchema.create({
         company: req.body.company,
         position: req.body.position,
+        job_link: '//' + req.body.job_link,
         stage: req.body.stage,
         next_step: req.body.next_step,
         date_found: req.body.date_found,

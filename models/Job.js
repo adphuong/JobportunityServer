@@ -20,6 +20,11 @@ const JobSchema = new Schema({
     maxlength: 255,
     trim: true
   },
+  job_link: {
+      type: String,
+      required: true,
+      trim: true
+  },
   stage: {
     type: String,
     default: "Prospect",
