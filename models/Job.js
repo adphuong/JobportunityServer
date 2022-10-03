@@ -23,12 +23,33 @@ const JobSchema = new Schema({
   stage: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+    // check if the value given is an item in the array.
+    enum: [
+      "Prospect",
+      "Applied",
+      "Phone Screen",
+      "Online Assessment",
+      "Interview: Phone",
+      "Interview: Virtual",
+      "Interview: In-office",
+      "Negotiating Offer",
+      "Rejection",
+      "Closed",
+      "Offer"
+    ]
   },
   next_step: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+    enum: [
+      "Apply",
+      "Research",
+      "Follow-up Application",
+      "Do interview(s)",
+      "Email: Thank you"
+    ]
   },
   date_applied: {
     type: String,
