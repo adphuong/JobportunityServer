@@ -5,12 +5,6 @@ const jobSchema = require('../../models/Job');
 
 router.use(express.json());
 
-// @route GET api/jobs/test
-// @description Tests jobs route
-// @access Public
-router.get('/test', (req, res) => res.send('job route testing!'));
-
-
 // @route GET api/jobs
 // @description Get all jobs
 // @access Public
@@ -23,7 +17,6 @@ router.get('/', async (req, res) => {
     
     const jobs = await jobSchema.find().sort({ date_found: -1 })
     res.send(jobs);
-    // .catch(err => res.status(404).json({ nojobsfound: 'No Jobs found' }));
 });
 
 
@@ -48,5 +41,10 @@ router.post('/add-job', async (req, res) => {
 });
 
 
+router.delete("/delete/:id", (req, res) => {
+    jobSchema.findByIdAndDelete({_id: req.params.id})
+    .then(doc => console.log(doc))
+    .catch(err => console.log(err))
+})
 
 module.exports = router;
