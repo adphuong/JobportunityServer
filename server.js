@@ -10,7 +10,7 @@ const app = express();
 
 // routes
 const jobs = require('./routes/api/jobs');
-const users = require('./routes/auth');
+const users = require('./routes/api/users');
 
 
 // Init Middleware
