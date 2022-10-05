@@ -71,7 +71,8 @@ const JobSchema = new Schema({
     trim: true
   },
   notes: {
-    type: String
+    type: String,
+    trim: false
   }
 });
 

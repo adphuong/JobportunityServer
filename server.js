@@ -28,8 +28,10 @@ app.use(cors({ origin: true, credentials: true }));
 // Connect Mongo database
 connectDB();
 
+// Register routes
 app.use('/api/users', users);
 app.use('/api/jobs', jobs);
+
 
 const PORT = 2300;
 app.listen(PORT, () => {
