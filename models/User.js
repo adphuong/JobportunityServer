@@ -4,12 +4,7 @@ const bcrypt = require( 'bcryptjs' );               // Hashing password for secu
 const validator = require('validator')
 
 const UserSchema = new Schema ({
-	// name: {
-	// 	type: String,
-	// 	required: true
-	// },
-
-	email: {
+ 	email: {
 		type: String,
 		required: true,
 		unique: true

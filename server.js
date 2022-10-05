@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const connectDB = require('./config/db');
 const User = require("./models/User");
@@ -31,7 +32,6 @@ connectDB();
 // Register routes
 app.use('/api/users', users);
 app.use('/api/jobs', jobs);
-
 
 const PORT = 2300;
 app.listen(PORT, () => {
