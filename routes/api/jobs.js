@@ -2,8 +2,13 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require("mongoose");
 const jobSchema = require('../../models/Job');
+const requireAuth = require('../../middleware/requireAuth')
+
 
 router.use(express.json());
+
+// Require authorization for all job routes
+router.use(requireAuth);
 
 // @route GET api/jobs
 // @description Get all jobs
