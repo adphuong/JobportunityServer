@@ -22,7 +22,7 @@ const JobSchema = new Schema({
   },
   job_link: {
       type: String,
-      required: true,
+      required: false,
       trim: true
   },
   stage: {
@@ -73,6 +73,10 @@ const JobSchema = new Schema({
   notes: {
     type: String,
     trim: false
+  },
+  user_id: {
+    type: String,
+    required: true
   }
 });
 

@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require("mongoose");
 const jobSchema = require('../../models/Job');
-const requireAuth = require('../../middleware/requireAuth')
+const requireAuth = require('../../middleware/requireAuth');
+const Job = require('../../models/Job');
 
 
 router.use(express.json());
@@ -14,14 +15,16 @@ router.use(requireAuth);
 // @description Get all jobs
 // @access Public
 router.get('/', async (req, res) => {
+    const user_id = req.user._id
+
     // res.send("Jobs API Homepage");
 
     // jobSchema.find()
     // .then(items => res.json(items))
     // .catch(err => res.status(404).json({ nojobsfound: 'No Jobs found' }))
     
-    const jobs = await jobSchema.find().sort({ date_found: -1 })
-    res.send(jobs);
+    const jobs = await jobSchema.find({ user_id }).sort({ date_found: -1 })
+    res.status(200).json(jobs)
 });
 
 
@@ -30,6 +33,7 @@ router.get('/', async (req, res) => {
 // @description add/save kpn
 // @access Public
 router.post('/add-job', async (req, res) => {
+    const user_id = req.user._id
     let job = jobSchema.create({
         company: req.body.company,
         position: req.body.position,
@@ -38,10 +42,13 @@ router.post('/add-job', async (req, res) => {
         next_step: req.body.next_step,
         date_found: req.body.date_found,
         date_applied: req.body.date_applied,
-        notes: req.body.notes
+        notes: req.body.notes,
+        user_id: user_id
     })
     .then((doc) => console.log(doc))
     .catch((err) => console.log(err));
+
+    
 
 });
 
