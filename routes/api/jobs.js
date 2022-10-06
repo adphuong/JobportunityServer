@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require("mongoose");
 const jobSchema = require('../../models/Job');
 const requireAuth = require('../../middleware/requireAuth');
-const Job = require('../../models/Job');
 
 
 router.use(express.json());
@@ -16,18 +14,10 @@ router.use(requireAuth);
 // @access Public
 router.get('/', async (req, res) => {
     const user_id = req.user._id
-
-    // res.send("Jobs API Homepage");
-
-    // jobSchema.find()
-    // .then(items => res.json(items))
-    // .catch(err => res.status(404).json({ nojobsfound: 'No Jobs found' }))
     
     const jobs = await jobSchema.find({ user_id }).sort({ date_found: -1 })
     res.status(200).json(jobs)
 });
-
-
 
 // @route GET api/jobs
 // @description add/save kpn
@@ -47,9 +37,6 @@ router.post('/add-job', async (req, res) => {
     })
     .then((doc) => console.log(doc))
     .catch((err) => console.log(err));
-
-    
-
 });
 
 
