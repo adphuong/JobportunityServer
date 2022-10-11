@@ -59,12 +59,12 @@ const JobSchema = new Schema({
     ]
   },
   date_found: {
-    type: Date,
+    type: String,
     required: true,
     trim: true
   },
   date_applied: {
-    type: Date,
+    type: String,
     default: "----",
     required: false,
     trim: true
