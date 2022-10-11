@@ -15,7 +15,7 @@ router.use(requireAuth);
 router.get('/', async (req, res) => {
     const user_id = req.user._id
     
-    const jobs = await jobSchema.find({ user_id }).sort({ date_found: -1 })
+    const jobs = await jobSchema.find({ user_id }).sort({ date_applied: -1 })
     res.status(200).json(jobs)
 });
 
