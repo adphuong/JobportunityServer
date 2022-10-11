@@ -2,7 +2,6 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Joi = require("joi");      // object schema descriptions to validate JS objects
 
 
 const JobSchema = new Schema({
@@ -60,12 +59,12 @@ const JobSchema = new Schema({
     ]
   },
   date_found: {
-    type: String,
+    type: Date,
     required: true,
     trim: true
   },
   date_applied: {
-    type: String,
+    type: Date,
     default: "----",
     required: false,
     trim: true
