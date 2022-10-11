@@ -1,9 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const connectDB = require('./config/db');
-const User = require("./models/User");
-const Job = require("./models/Job");
-const bodyParser = require('body-parser');
 var cors = require('cors');
 
 
@@ -17,11 +14,6 @@ const users = require('./routes/api/users');
 // Init Middleware
 app.use(express.json());
 app.use(express.json({ extended: false }));
-
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({
-//   extended: true
-// }));
 
 // cors
 app.use(cors({ origin: true, credentials: true }));
